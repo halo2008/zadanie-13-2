@@ -5,35 +5,27 @@
 	Teraz wystarczy napisać funkcję otwierającą modal:
 	*/
 
-	var modalOne = document.getElementById('modal-one');
-	var modalTwo = document.getElementById('modal-two');
+	
+	// var aTag = event.target.querySelector("a");
 	
 	var showModal = function(event){
 		event.preventDefault();
 		document.querySelector('#modal-overlay').classList.add('show');
+		
 
 	};
 
-	document.querySelector('[href="#modal-one"]').addEventListener('click', one);
-	document.querySelector('[href="#modal-two"]').addEventListener('click', two);
-	document.querySelector('[href="#modal-three"]').addEventListener('click', three);
+	var modalLinks = document.querySelectorAll('.show-modal');
 
-	function one(event) {
-		document.getElementById('modal-one').classList.add('show');
-	}
-
-	function two() {
-		document.getElementById('modal-two').classList.add('show');
-	}
-
-	function three() {
-		document.getElementById('modal-three').classList.add('show');
-	}
-
+	modalLinks.forEach(function(element) {
+    element.addEventListener("click", function() {
+        document.querySelector(event.target.getAttribute("href")).classList.add('show');
+    	});
+	});
 
 	// Mimo, że obecnie mamy tylko jeden link, stosujemy kod dla wielu linków. W ten sposób nie będzie trzeba go zmieniać, kiedy zechcemy mieć więcej linków lub guzików otwierających modale
 	
-	var modalLinks = document.querySelectorAll('.show-modal');
+	
 	
 	for(var i = 0; i < modalLinks.length; i++){
 		modalLinks[i].addEventListener('click', showModal);
@@ -83,4 +75,4 @@
 	Zmień funkcję showModal tak, aby w momencie wyświetlania była zmieniana treść nagłówka na dowolną inną, np. "Modal header". 
 	*/
 	
-})(); 
+})();
